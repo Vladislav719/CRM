@@ -19,7 +19,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{DataSourceConfig.class, PersistenceConfig.class, CoreConfig.class, AppSecurityConfig.class};
+        return new Class<?>[]{DataSourceConfig.class, PersistenceConfig.class, CoreConfig.class};
     }
 
     @Override
@@ -32,16 +32,16 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         return new String[]{"/"};
     }
 
-    @Override
-    protected Filter[] getServletFilters() {
-        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-        characterEncodingFilter.setEncoding("UTF-8");
-        characterEncodingFilter.setForceEncoding(true);
-        return new Filter[]{
-                characterEncodingFilter,
-                new DelegatingFilterProxy("springSecurityFilterChain"),
-                new OpenEntityManagerInViewFilter(),
-                new HttpPutFormContentFilter()
-        };
-    }
+//    @Override
+//    protected Filter[] getServletFilters() {
+//        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+//        characterEncodingFilter.setEncoding("UTF-8");
+//        characterEncodingFilter.setForceEncoding(true);
+//        return new Filter[]{
+//                characterEncodingFilter,
+//                new DelegatingFilterProxy("springSecurityFilterChain"),
+//                new OpenEntityManagerInViewFilter(),
+//                new HttpPutFormContentFilter()
+//        };
+//    }
 }
